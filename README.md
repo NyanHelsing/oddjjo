@@ -9,8 +9,9 @@ mise plugin add julia
 ## Quick Start
 
 ```bash
-git clone https://github.com/nyanhelsing/audio-synthesis-demo.git
-cd audio-synthesis-demo
-mise run
+git clone https://github.com/NyanHelsing/oddjjo.git
+cd oddjjo
+mise run install
+mise run start
 ```
 

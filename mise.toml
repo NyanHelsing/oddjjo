@@ -1,7 +1,7 @@
 [tasks.install]
 run = "julia InstallDeps.jl"
 
-[tasks.dev]
+[tasks.start]
 run = "julia GenerateTone.jl"
 
 [tools]
