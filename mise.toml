@@ -1,0 +1,8 @@
+[tasks.install]
+run = "julia InstallDeps.jl"
+
+[tasks.dev]
+run = "julia GenerateTone.jl"
+
+[tools]
+julia = "latest"
