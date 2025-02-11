@@ -12,13 +12,23 @@ amp_env = exp.(DECAY * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE)
 
 waveform = sin.(2pi * FREQUENCY * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
 
+# Play three chords sequentially
 PortAudioStream("pulse"; samplerate=SAMPLE_RATE, latency=0.1) do stream
-    waveform = sin.(2pi * FREQUENCY * 1 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
-    write(stream, waveform)
+    waveformA = sin.(2pi * FREQUENCY * 1 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    waveformB = sin.(2pi * FREQUENCY * 1.8 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    waveformC = sin.(2pi * FREQUENCY * .666 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    mixed_waveform = (waveformA + waveformB + waveformC) / 3
+    write(stream, mixed_waveform)
 
-    waveform = sin.(2pi * (FREQUENCY * 1.51) * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
-    write(stream, waveform)
+    waveformA = sin.(2pi * FREQUENCY * 1.5 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    waveformB = sin.(2pi * FREQUENCY * 1.125 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    waveformC = sin.(2pi * FREQUENCY * .75 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    mixed_waveform = (waveformA + waveformB + waveformC) / 3
+    write(stream, mixed_waveform)
 
-    waveform = sin.(2pi * FREQUENCY * 1.24 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
-    write(stream, waveform)
+    waveformA = sin.(2pi * FREQUENCY * 1.333 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    waveformB = sin.(2pi * FREQUENCY * 1.666 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    waveformC = sin.(2pi * FREQUENCY * 1.0 * (1:DURATION*SAMPLE_RATE) / SAMPLE_RATE) .* amp_env * MASTER_OUTPUT
+    mixed_waveform = (waveformA + waveformB + waveformC) / 3
+    write(stream, mixed_waveform)
 end
